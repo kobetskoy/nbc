@@ -1,0 +1,25 @@
+{
+	"baseCost": 2000,
+	"options": {
+		"setup": 750,
+		"temporaryDevice": 750,
+	},
+	"pricesRangesConditions": {
+		{"minPrice": 15800, 
+			"warranties":{"2":500, "3":1100}
+		},
+		{"minPrice": 35000, 
+			"warranties":{"2":800, "3":2500}
+		},
+		{"minPrice": 50000, 
+			"warranties":{"2":1100, "3":5200}
+		},
+		{"minPrice": 80000, 
+			"warranties":{"2":1400, "3":5000}
+		},
+		{"minPrice": 100000, 
+			"warranties":{"2":2200, "3":7700}
+		},
+	},
+	"maxPrice": 120000,
+}
