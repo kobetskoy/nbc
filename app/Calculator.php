@@ -12,10 +12,10 @@ class Calculator
     protected $warranty;
     /**
      * * @param int   $price   input price of device
+     * #@TODO rework to interface with json file for example
      */
     public function __construct($price)
     {
-        //$this->baseCost = $this->getVar($config, 'base2YCost', false);
         $this->productPrice = $price;
         
         $this->baseCost = 1990;
