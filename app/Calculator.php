@@ -51,7 +51,7 @@ class Calculator
             }
         }
 
-        return 1;
+        return $this->getErrorMessage();
     }
 
     /**
@@ -72,4 +72,10 @@ class Calculator
         return $optionsCost;
     }
 
+    /**
+     * Function for showing error if product price offset from config price range
+     */
+    public function getErrorMessage(){
+        return "Product at this price is not subject of this offer yet";
+    }
 }
