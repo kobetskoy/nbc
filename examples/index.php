@@ -60,7 +60,7 @@
                 </div>
                 <div class="flex flex-col w-full">
                     <button type="submit" class="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline mx-auto mt-6" >Расчитать стоимость</button>
-                    <div id="calculationResult" class="flex text-lg text-center mx-auto mt-6 p-2"></div>
+                    <div id="calculationResult" class="flex text-lg text-center mx-auto mt-6 p-2">{{message}}</div>
                 </div>
               </form>
             </div>
@@ -70,14 +70,11 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.6.11/vue.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.18.0/axios.min.js"></script>
     
-    <script id="rendered-js">    
-        var options = {};
-        var productPrice = '';
-        var productSelect = {};
-        var warranty = '';
-        vm = new Vue({
+    <script id="rendered-js">
+        new Vue({
         el : "#app",
         data : {
+            message: '',
             productPrice: '',
             productSelect: '',
             warranty: 2,
@@ -93,8 +90,8 @@
                 params.append('options', JSON.stringify(this.options));
                 
                 axios.post('/api/getCardCost.php', params)
-                .then(function(response) {
-                    document.getElementById("calculationResult").innerHTML = response.data.message;
+                .then((response) => {
+                    this.message = response.data.message;
                 })
                 .catch(function(error) {
                     console.warn(error);
@@ -102,14 +99,13 @@
             }
         },
         mounted() {
-            var app = this;
             axios.get('/api/getList.php')
-            .then(function (response) {
-                app.productList = response.data;
+            .then((response) => {
+                this.productList = response.data;
             })
-            .catch(function (resp) {
+            .catch((response) => {
                 console.log(resp);
-                alert("Не удалось получить данные");
+                this.message = "Can't load data";
             });
         },
         });
