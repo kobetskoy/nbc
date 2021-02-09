@@ -104,7 +104,7 @@
                 this.productList = response.data;
             })
             .catch((response) => {
-                console.log(resp);
+                console.log(response);
                 this.message = "Can't load data";
             });
         },
